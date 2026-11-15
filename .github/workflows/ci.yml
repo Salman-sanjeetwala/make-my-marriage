@@ -1,0 +1,25 @@
+name: Verify scaffold
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - name: Install Chromium and Linux browser dependencies
+        run: npm run e2e:install -- --with-deps
+      - name: Verify browser startup and live development proxy
+        run: npm run test:e2e

@@ -1,0 +1,11 @@
+<main>
+  <h1>Make My Marriage</h1>
+  <h2>Connection check</h2>
+  <p role="status" aria-live="polite">
+    @switch (status()) { @case ('loading') { Checking connection… } @case ('success') { Connected
+    successfully. } @case ('failure') { Unable to connect. Please try again. } }
+  </p>
+  <button type="button" (click)="checkConnection()" [disabled]="status() === 'loading'">
+    Check again
+  </button>
+</main>

@@ -22,5 +22,5 @@
 - Verify: `npm run check` (format, lint, types/templates, tests, builds).
   With servers running: `npm run smoke`. Format scaffold files: `npm run format`.
   Browser verification: `npm run e2e:install`, then `npm run test:e2e` with ports
-  3000/4200 free. Playwright starts/stops its own servers; CI runs this test too.
+  8777/4200 free. Playwright starts/stops its own servers; CI runs this test too.
   Run relevant checks after changes and report failures or blocked checks accurately.

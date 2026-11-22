@@ -14,13 +14,13 @@ export default defineConfig({
   webServer: [
     {
       command: 'npm run build --workspace @mmm/api && npm run start --workspace @mmm/api',
-      url: 'http://127.0.0.1:3000/api/health',
-      env: { PORT: '3000', NODE_ENV: 'test' },
+      url: 'http://127.0.0.1:8777/api/health',
+      env: { PORT: '8777', NODE_ENV: 'test' },
       reuseExistingServer: false,
       timeout: 120000,
     },
     {
-      command: 'npm run dev:web',
+      command: 'npm run dev --workspace @mmm/web -- --proxy-config ../../e2e/proxy.conf.json',
       url: 'http://localhost:4200',
       reuseExistingServer: false,
       timeout: 120000,

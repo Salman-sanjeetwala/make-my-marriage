@@ -7,7 +7,7 @@ test('Angular boots and reaches the real API through its development proxy', asy
   const pageErrors = [];
   page.on('pageerror', (error) => pageErrors.push(error.message));
   const healthResponse = page.waitForResponse('http://localhost:4200/api/health');
-  await page.goto('/');
+  await page.goto('/health');
 
   const response = await healthResponse;
   expect(response.request().method()).toBe('GET');

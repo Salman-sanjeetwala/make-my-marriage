@@ -1,7 +1,7 @@
 # Make My Marriage
 
 Minimal Angular 21 + NestJS 12 TypeScript scaffold using npm workspaces. It contains
-only a frontend connectivity check and `GET /api/health`; no database or external
+a public homepage with fictional wedding previews, a connectivity check at `/health`, and `GET /api/health`; no database or external
 service credentials are required. Health reports application liveness, not database readiness.
 
 ## Prerequisites and installation
@@ -25,7 +25,7 @@ blocks `npm.ps1`. No global Angular or Nest CLI installation is needed.
 npm run dev
 ```
 
-Open **http://localhost:4200**. Angular calls relative `/api/health`; its development
+Open **http://localhost:4200** for the homepage. Account actions currently show a coming-soon notice; the wedding previews do not submit data. The approved Stitch gallery photos are served locally, while fonts load from Google Fonts with system fallbacks. Visit **http://localhost:4200/health** for the connectivity check. Angular calls relative `/api/health`; its development
 proxy forwards `/api/**` to **http://127.0.0.1:3000**, preserving the `/api` prefix.
 The expected response is `{"data":{"status":"ok"}}`. The page shows loading,
 success, or failure and offers a retry; requests time out after five seconds.
@@ -100,7 +100,8 @@ npm run test:e2e
 The first command downloads Playwright's Chromium runtime (repeat after Playwright
 upgrades). On Linux, use `npm run e2e:install -- --with-deps` to install required
 system libraries as well. Stop your development servers first: the browser test
-owns ports 3000 and 4200, starts both apps, and stops its processes afterward. It
+owns ports 8777 (API) and 4200 (web), starts both apps, and stops its processes afterward.
+Its test-specific proxy forwards `/api/**` to port 8777. It
 does not reuse existing servers or mock the health request. Browser traces on failure
 are written to ignored `test-results/`. `npm run check` stays browser-independent;
 run both `npm run check` and `npm run test:e2e` for full verification.

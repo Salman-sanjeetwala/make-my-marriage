@@ -1,38 +1,92 @@
-:root {
-  font-family: system-ui, sans-serif;
-  color: #202124;
-  background: #fafafa;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
-
 body {
   margin: 0;
+  background: #f7f5ef;
+  color: #202925;
+  font-family: Manrope, sans-serif;
 }
-
-main {
+[hidden] {
+  display: none !important;
+}
+:focus-visible {
+  outline: 3px solid #183f35;
+  outline-offset: 4px;
+}
+button:disabled {
+  cursor: default;
+}
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+}
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: 1rem;
+  background: white;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+mmm-health {
+  display: block;
   max-width: 36rem;
   margin: 10vh auto;
-  padding: 1.5rem;
+  padding: 2rem;
+}
+mmm-health button {
+  padding: 0.75rem;
+  border: 1px solid;
+  margin-top: 1rem;
+}
+@media (max-width: 640px) {
+  header > div {
+    height: auto !important;
+    min-height: 5rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  header .font-serif {
+    font-size: 1rem;
+  }
+  .grid > *,
+  .flex > * {
+    min-width: 0;
+  }
+  table {
+    min-width: 580px;
+  }
+  .overflow-x-auto {
+    max-width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
 }
 
-h1 {
-  font-size: 1.8rem;
-}
-
-h2 {
-  font-size: 1.2rem;
-}
-
-button {
-  font: inherit;
-  padding: 0.6rem 1rem;
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: wait;
-}
-
-button:focus-visible {
-  outline: 3px solid #2459a6;
-  outline-offset: 3px;
+@media (max-width: 640px) {
+  .overflow-x-auto > div {
+    min-width: 540px;
+  }
+  .flex.items-center.gap-2.bg-ivory {
+    flex-wrap: wrap;
+  }
 }
